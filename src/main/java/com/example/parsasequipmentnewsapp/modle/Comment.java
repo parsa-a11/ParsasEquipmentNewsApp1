@@ -1,6 +1,7 @@
 package com.example.parsasequipmentnewsapp.modle;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Comment extends BaseEntity{
@@ -8,6 +9,7 @@ public class Comment extends BaseEntity{
     private String authorName;
     private String authorEmail;
     private boolean approved;
+    private Post post;
 
     public String getContent() {
         return content;
@@ -39,5 +41,14 @@ public class Comment extends BaseEntity{
 
     public void setApproved(boolean approved) {
         this.approved = approved;
+    }
+
+    @ManyToOne
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
     }
 }
