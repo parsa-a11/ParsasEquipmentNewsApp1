@@ -8,6 +8,7 @@ public class ParsasEquipmentNewsAppApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ParsasEquipmentNewsAppApplication.class, args);
+        System.out.println("start application");
     }
 
 }

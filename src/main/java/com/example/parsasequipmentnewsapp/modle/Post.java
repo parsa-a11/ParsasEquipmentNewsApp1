@@ -65,8 +65,8 @@ public class Post extends BaseEntity{
     public void setPublishedAt(LocalDateTime publishedAt) {
         this.publishedAt = publishedAt;
     }
-    @ManyToOne
 
+    @ManyToOne
     public User getUser() {
         return user;
     }
