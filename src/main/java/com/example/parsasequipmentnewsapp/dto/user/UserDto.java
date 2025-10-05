@@ -8,14 +8,12 @@ public class UserDto {
     private final String password;
     private final String email;
     private final String fullName;
-    private final Role role;
 
-    public UserDto(String username, String password, String email, String fullName, Role role) {
+    public UserDto(String username, String password, String email, String fullName) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.fullName = fullName;
-        this.role = role;
     }
 
     @NotBlank(message = "user.dto.username.blank")
@@ -36,10 +34,5 @@ public class UserDto {
     @NotBlank(message = "user.dto.full.name.blank")
     public String getFullName() {
         return fullName;
-    }
-
-    @NotBlank(message = "user.dto.role.blank")
-    public Role getRole() {
-        return role;
     }
 }
