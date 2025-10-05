@@ -56,12 +56,11 @@ public class Post extends BaseEntity{
         this.excerpt = excerpt;
     }
 
-
+    @CreationTimestamp
     public LocalDateTime getPublishedAt() {
         return publishedAt;
     }
 
-    @CreationTimestamp
     public void setPublishedAt(LocalDateTime publishedAt) {
         this.publishedAt = publishedAt;
     }
