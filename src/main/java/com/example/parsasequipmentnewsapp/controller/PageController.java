@@ -7,6 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 @CrossOrigin(allowedHeaders = "*", origins = "*")
 public class PageController {
+    @GetMapping("/")
+    public String index() {
+        return "index";
+    }
+
     @GetMapping("/403")
     public String accessDen() {
         return "403";

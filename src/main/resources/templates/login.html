@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>فرم ساده — بوت‌استرپ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <style>
+        body{
+            min-height:100vh;
+            background:linear-gradient(180deg, #ffffff, #ffffff);color:#eaf2ff;
+        }
+        .card{
+            border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));
+            border:1px solid rgba(255,255,255,0.03);
+        }
+        pre {
+            background: rgba(255,255,255,0.02); color:#dff7ff;
+            padding:12px; border-radius:8px;
+        }
+    </style>
+</head>
+<body class="d-flex align-items-center justify-content-center py-5">
+<div class="container">
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="errorToast" class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive"
+             aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body" id="toastMessage">
+                    خطا رخ داده است
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                        aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+            <div class="card p-4 shadow-sm">
+                <h4 class="mb-3 text-center" dir="auto">ورود</h4>
+                <div class="mb-3">
+                    <label for="username" class="form-label">نام کاربری</label>
+                    <input id="username" name="username" type="text" class="form-control form-control-lg" placeholder="نام کاربری" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">رمز عبور</label>
+                    <div class="input-group">
+                        <input id="password" name="password" type="password" class="form-control form-control-lg" placeholder="رمز عبور" required>
+                    </div>
+                </div>
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary btn-lg flex-grow-1">ثبت</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function login() {
+        let username = document.getElementById("username");
+        let password = document.getElementById("password");
+        fetch(`http://localhost:1000/users/login?username=${username}&password=${password}`
+            ,{
+            method: "Post"
+            ,headers: {
+                "Content-type": "application/json"
+            }
+        })
+            .then(async res => {
+                if (res.status !== 200) {
+                    showErrorToast('کاربر مورد نظر یافت نشد.');
+                    return;
+                }
+                window.location.replace("https://localhost:1000")
+            })
+    }
+
+    function showErrorToast(message) {
+        document.getElementById("toastMessage").textContent = message;
+        const toastElement = document.getElementById("errorToast");
+        const toast = new bootstrap.Toast(toastElement);
+        toast.show();
+    }
+</script>
+</body>
+</html>
+

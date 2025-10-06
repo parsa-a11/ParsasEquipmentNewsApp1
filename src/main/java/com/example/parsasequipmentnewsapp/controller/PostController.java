@@ -43,6 +43,12 @@ public class PostController {
         return ResponseEntity.ok(postDtos);
     }
 
+    @GetMapping("/top4posts")
+    public ResponseEntity<?> findTop4Posts() {
+        postService.top4Posts();
+        return ResponseEntity.ok().build();
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<PostDto> findById(@PathVariable long id) {
         Post post = postService.findById(id);

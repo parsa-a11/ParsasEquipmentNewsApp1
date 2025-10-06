@@ -56,4 +56,9 @@ public class PostServiceImpl implements PostService {
         post.setUser(updatePost.getUser());
         postRepository.save(post);
     }
+
+    @Override
+    public List<Post> top4Posts() {
+        return postRepository.findTop4ByDisableDateIsNull();
+    }
 }

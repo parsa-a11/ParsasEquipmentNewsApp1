@@ -17,4 +17,5 @@ public interface PostService {
 
     void update(long id, Post updatePost);
 
+    List<Post> top4Posts();
 }
