@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 
 @Entity
 public class Post extends BaseEntity{
+    private String image;
     private String title;
     private String author;
     private String slug;
@@ -15,6 +16,14 @@ public class Post extends BaseEntity{
     private String excerpt;
     private LocalDateTime publishedAt;
     private User user;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public String getTitle() {
         return title;

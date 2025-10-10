@@ -5,6 +5,7 @@ import com.example.parsasequipmentnewsapp.modle.User;
 import jakarta.validation.constraints.NotBlank;
 
 public class PostSaveDto {
+    private final String image;
     private final String title;
     private final String author;
     private final String slug;
@@ -12,13 +13,20 @@ public class PostSaveDto {
     private final String excerpt;
     private final String user;
 
-    public PostSaveDto(String title, String author, String slug, String content, String excerpt, String user) {
+    public PostSaveDto(String image, String title, String author
+            , String slug, String content, String excerpt, String user) {
+        this.image = image;
         this.title = title;
         this.author = author;
         this.slug = slug;
         this.content = content;
         this.excerpt = excerpt;
         this.user = user;
+    }
+
+    @NotBlank(message = "post.save.dto.image.blank")
+    public String getImage() {
+        return image;
     }
 
     @NotBlank(message = "post.save.dto.title.blank")
@@ -53,6 +61,7 @@ public class PostSaveDto {
 
     public Post convertToPost(User user) {
         Post post = new Post();
+        post.setImage(image);
         post.setTitle(title);
         post.setAuthor(author);
         post.setSlug(slug);

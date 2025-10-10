@@ -9,6 +9,7 @@ public class PostDto {
     private final long id;
     private final LocalDateTime creationDate;
     private final LocalDateTime updatedAt;
+    private final String image;
     private final String title;
     private final String author;
     private final String slug;
@@ -22,10 +23,18 @@ public class PostDto {
     private final String fullName;
     private final Role role;
 
-    public PostDto(long id, LocalDateTime creationDate, LocalDateTime updatedAt, String title, String author, String slug, String content, String excerpt, LocalDateTime publishedDate, long userId, String username, String password, String email, String fullName, Role role) {
+    public PostDto(long id, LocalDateTime creationDate
+            , LocalDateTime updatedAt, String image
+            , String title, String author
+            , String slug, String content
+            , String excerpt, LocalDateTime publishedDate
+            , long userId, String username
+            , String password, String email
+            , String fullName, Role role) {
         this.id = id;
         this.creationDate = creationDate;
         this.updatedAt = updatedAt;
+        this.image = image;
         this.title = title;
         this.author = author;
         this.slug = slug;
@@ -50,6 +59,10 @@ public class PostDto {
 
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
+    }
+
+    public String getImage() {
+        return image;
     }
 
     public String getTitle() {
@@ -105,6 +118,7 @@ public class PostDto {
                 post.getId(),
                 post.getCreatedAt(),
                 post.getUpdatedAt(),
+                post.getImage(),
                 post.getTitle(),
                 post.getAuthor(),
                 post.getSlug(),
