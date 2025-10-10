@@ -46,11 +46,11 @@ public class User extends BaseEntity{
         this.fullName = fullName;
     }
 
+    @Enumerated(EnumType.STRING)
     public Role getRole() {
         return role;
     }
 
-    @Enumerated(EnumType.STRING)
     public void setRole(Role role) {
         this.role = role;
     }

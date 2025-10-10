@@ -1,9 +1,6 @@
 package com.example.parsasequipmentnewsapp.service.user;
 
-import com.example.parsasequipmentnewsapp.customeExeption.RuleException;
-import com.example.parsasequipmentnewsapp.modle.Post;
 import com.example.parsasequipmentnewsapp.modle.User;
-import com.example.parsasequipmentnewsapp.repository.PostRepository;
 import com.example.parsasequipmentnewsapp.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -24,7 +21,7 @@ public class CustomUserDetailService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username).orElseThrow(() -> new
-                UsernameNotFoundException("User not found with username: " + username));
+                UsernameNotFoundException("User not found"));
         return org.springframework.security.core.userdetails.User
                 .withUsername(username)
                 .password(user.getPassword())

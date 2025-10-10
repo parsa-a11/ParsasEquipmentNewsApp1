@@ -23,26 +23,26 @@ import java.util.List;
 @CrossOrigin(allowedHeaders = "*", origins = "*")
 public class UserController {
     private final PasswordEncoder passwordEncoder;
-    private final CustomUserDetailService userDetailService;
+    private final CustomUserDetailService customUserDetailService;
     private final AuthenticationManager authenticationManager;
 
     public UserController(PasswordEncoder passwordEncoder
-            , CustomUserDetailService userDetailService
+            , CustomUserDetailService customUserDetailService
             , AuthenticationManager authenticationManager) {
         this.passwordEncoder = passwordEncoder;
-        this.userDetailService = userDetailService;
+        this.customUserDetailService = customUserDetailService;
         this.authenticationManager = authenticationManager;
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@Valid @RequestParam UserDto userDto) {
+    public ResponseEntity<?> register(@Valid @RequestBody UserDto userDto) {
         User user = new User();
         user.setUsername(userDto.getUsername());
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         user.setEmail(userDto.getEmail());
         user.setFullName(userDto.getFullName());
         user.setRole(Role.USER);
-        userDetailService.save(user);
+        customUserDetailService.save(user);
         return ResponseEntity.ok().build();
     }
 
@@ -68,7 +68,7 @@ public class UserController {
 
     @GetMapping()
     public ResponseEntity<List<User>> findAllUsers() {
-        List<User> all = userDetailService.findAll();
+        List<User> all = customUserDetailService.findAll();
         return ResponseEntity.ok(all);
     }
 }
