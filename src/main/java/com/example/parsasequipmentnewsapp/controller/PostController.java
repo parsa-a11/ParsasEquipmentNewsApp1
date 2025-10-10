@@ -44,9 +44,12 @@ public class PostController {
     }
 
     @GetMapping("/top4posts")
-    public ResponseEntity<?> findTop4Posts() {
-        postService.top4Posts();
-        return ResponseEntity.ok().build();
+    public ResponseEntity<List<PostDto>> top4Posts() {
+        List<Post> posts = postService.top4Posts();
+        List<PostDto> postDtos = posts.stream()
+                .map(PostDto::convertToDto)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(postDtos);
     }
 
     @GetMapping("/{id}")

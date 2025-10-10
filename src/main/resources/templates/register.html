@@ -115,7 +115,7 @@
               email: document.getElementById("registerEmail").value,
               fullName: document.getElementById("registerName").value
             };
-            const response = await fetch("http://localhost:1000/users/register", {
+            const response = await fetch("http://localhost:8080/users/register", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json"
@@ -127,7 +127,7 @@
                         showErrorToast(response[0].title);
                         return;
                       }
-                      window.location.href = "http://localhost:1000/login";
+                      window.location.href = "http://localhost:8080/login";
                     })
           }
   )

@@ -94,7 +94,7 @@
         let username = document.getElementById("loginUsername").value;
         let password = document.getElementById("loginPassword").value;
         fetch
-        (`http://localhost:1000/users/login?username=${username}&password=${password}`, {
+        (`http://localhost:8080/users/login?username=${username}&password=${password}`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json"
@@ -105,7 +105,7 @@
                     showErrorToast('کاربر مورد نظر یافت نشد.')
                     return;
                 }
-                window.location.replace("http://localhost:1000");
+                window.location.replace("http://localhost:8080");
             })
     }
 
